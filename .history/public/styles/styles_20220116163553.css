@@ -1,0 +1,22 @@
+html,body {
+          
+          width:100%;
+}
+
+.hidden{
+          display:none;
+}
+
+.wrongInput
+{
+                    
+          
+}
+.optSVG{
+          height:50px;
+          width:50px;
+}
+.deviceSVG{
+          height:50px;
+          width:50px;
+}

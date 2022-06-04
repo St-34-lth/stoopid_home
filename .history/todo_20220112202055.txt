@@ -1,0 +1,99 @@
+TO DO -> 
+R3C --->  REFACTOR DISABLING  -- Update page- done
+          refactor disabling on add device page -- done 
+
+          
+R3D -- form validation  
+          update page -- done 
+          display message to re-enter values -- done 
+          avoid blank inputs -- done 
+         
+R4C
+          disable inputs in the update page 
+          ensure data received are displayed properly --> check condition 
+
+R4D
+R5D
+R5B
+
+Fixes:    
+          fix cancel deletion when prompted -- done 
+          refactor validateregisterform with getProps function  
+
+webinar:
+
+-r6d confirmation of deletion
+-comments and directory names 
+-
+
+ 
+//refactoring ideas 
+          1. could make an onload select function to decide whether which option is selected for device condition
+
+
+
+
+
+1) create db table fields etc 
+          -- kinda done 
+
+2) implement necessary form fields
+          fields: 
+          - id int,name varchar,condi varchar ,status varchar,temperature int,volume int
+          test an entry from the web page
+
+"insert query": insert into <table> (field,field,field) values(value,value,value);
+
+ALTER TABLE news_feed DROP id
+
+ALTER TABLE news_feed ADD  id BIGINT( 200 ) NOT NULL AUTO_INCREMENT FIRST ,ADD PRIMARY KEY (id)
+
+3) fix layouts of pages
+
+
+4) need to abstract away the template logic for rendering sections  -- kind of done 
+
+5) Fix accordion collapse 
+          -- done 
+
+6) next to do -> update and delete pages
+          --done 
+          polishing and proper forms to receive actions from the user
+
+7) change device status to 1 for on 0 for off 
+          
+8) fix static files 
+          -- done
+
+9) templates for each device added? 
+
+
+ 10) Add device page disables unintented stuff -- done
+          -gotta fix initial choice to be blank or something - done 
+          - disabled n/a choices -- done 
+
+11) fix form validations for input fields 
+          -Implemented form validation
+          -form validation in controller logic 
+
+12) figure out a different way to validate forms ? is there a way of throwing errors at the front end ? 
+                    --yes 
+
+13) fix bugs when querying -- done 
+          how: used an async promise
+
+14) fix update page's forms etc
+
+15) reset id's when devices are deleted? 
+          --done 
+
+16) errors 
+          - pass errors into the error page and display it sd
+
+17) add are you sure dialogue when deleting
+          --done 
+
+
+
+Try casting the devices into a https://www.codegrepper.com/code-examples/javascript/pass+ejs+into+javascript+function
+https://www.code-helper.com/answers/ejs-pass-array-to-javascript

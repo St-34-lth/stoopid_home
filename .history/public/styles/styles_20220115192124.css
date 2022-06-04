@@ -1,0 +1,18 @@
+html,body {
+          
+          width:100%;
+}
+
+.hidden{
+          display:none;
+}
+
+.wrongInput
+{
+                    
+          
+}
+.optSVG{
+          height:20px;
+          width:20px;
+}

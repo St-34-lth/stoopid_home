@@ -1,0 +1,12 @@
+
+<div class='col-lg-3'>
+<div class="accordion" id="accordionExample">
+      <%if(devices.length){%>
+          <% devices.forEach((device) => { %>
+                    <%- include('deviceListItem', {deviceItem: device}) %>
+          <% }) %>
+          <% } %>
+</div>
+</div>
+
+

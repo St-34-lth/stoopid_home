@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+          <!--  meta tags -->
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+         
+          <%- include('scripts',{}) %>
+        
+         
+          <title>
+                    <%= title %>
+          </title>
+
+
+</head>
+
+
+<body class='bg-dark'>
+          <header>
+                    <%-include('header', {}) %>
+
+          </header>
+
+          
+         <!-- navbar -->
+          
+
+          <main>
+          <div class='row bg-light text-dark '>
+                    <div class='col-lg-3'>
+                    <%- include('navbar', {}) %>
+                    
+                   
+                    </div>
+                    <% if(content.home){ %>
+                             <div class='col-lg'>
+                              <%- content.main %>
+                              </div>
+                    <% }else if(content.about){ %>
+                              <div class='col-lg'>
+                              <%= content.main %>
+                                        </div>
+                    <% }else if(content.devicePage){ %>
+                              <!-- <%= content.main %> -->
+                              
+                              <%- include('deviceList', {devices:content.deviceListItems}) %>
+                              
+                    <% }else if(content.updDevice){ %>
+                              <!-- <%= content.main %> -->
+                              <div class='col-lg'>
+                              <%- include('update', {devices:content.deviceListItems,availableDevices:content.availableDevices}) %>
+                              </div>
+                    <% }else if(content.addDevice){ %>
+                             
+                              <%- include('add', {availableDevices:content.availableDevices,scripts:content.scripts}) %>
+                              
+                    <% }else if(content.delDevice){ %>
+                              <!-- <%= content.main %> -->
+                              <%- include('del', {devices:content.deviceListItems}) %>
+                    
+                    <% }else { %> 
+                              <%- include('error', {}) %>
+                    <% } %>
+
+          </div>
+          
+          </main>
+
+          <footer>
+                    <%-include('footer', {}) %>
+          </footer>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,30 @@
+<script>
+        
+const optionAssets = '<%- JSON.stringify(optionAssets) %>'
+const deviceAssets = '<%- JSON.stringify(deviceAssets) %>'
+
+
+
+addEventListener('DOMContentLoaded',eventHandler().bind(optionAssets,deviceAssets),{'once':true})
+</script>
+<div class='col'>
+          <div class='row'>
+
+                    <div class=col-12>
+                    <div class="accordion" id="accordionExample">
+                    
+                    <%if(devices.length){%>
+                    <% devices.forEach((device) => { %>
+                              <%- include('deviceListItem', {deviceProp: device}) %>
+                    <% }) %>
+                    <% } %>
+                    
+                    </div>
+                    </div>
+          </div>
+          </div>
+       
+</div>
+
+
+

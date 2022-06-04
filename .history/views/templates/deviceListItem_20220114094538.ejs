@@ -1,0 +1,72 @@
+<div class="accordion-item">
+<h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#Collapse<%= deviceProp.id %>" aria-expanded="true" aria-controls="collapseOne">
+                    <%= deviceProp.name %>
+          </button>
+          </h2>
+          <div id="Collapse<%= deviceProp.id %>" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <div class="col">
+<% deviceProp.forEach((property)=>{
+          <label for='<%=property%>' class='form-label text-dark'>
+                  <%= property %></label>
+          <input readonly id='<%- property %>' name="deviceID" class='form-label' type="text" value="<%= property %>">
+})
+
+
+         
+                   
+         
+<!--          
+                             
+                             
+                   
+                    <!-- ID -->
+
+
+                    <label for='deviceID' class='form-label text-dark'>
+                              Device ID</label>
+                    <input readonly id='deviceID' name="deviceID" class='form-label' type="text" value="<%= deviceProp.id %>">
+                    <!-- Status -->
+                    <label for='status' class='form-label text-dark'>
+                              Device status</label>
+                    <input readonly id='deviceStatus' name="status" class='form-label mw-auto' type="text"
+                              value="<%= deviceProp.status= deviceProp.status == 0 ? 'Off' : 'On' %>">
+                    <!-- Condition -->
+                    <label for='condition' class='form-label text-dark'>
+                              Device condition</label>
+                              <input readonly id='deviceCondition' name="condition" class='form-label mw-auto' type="text"
+                                        value="<%= deviceProp.condi %>">
+                    <!-- Temperature  -->
+                    <% if(deviceProp.temperature != null) {%>
+                    <label for='temperature' class='form-label text-dark'>
+                              Device temperature</label>
+                    <input readonly id='deviceTemperature' name="temperature" class='form-label mw-auto' type="text"
+                              value="<%= deviceProp.temperature %>">
+                    
+                    <% } %>
+                    <!-- Volume -->
+                    <% if(deviceProp.volume !=null) {%>
+                    <label for='volume' class='form-label text-dark'>
+                              Device volume</label>
+                    <input readonly id='deviceVolume' name="volume" class='form-label mw-auto' type="text"
+                              value="<%= deviceProp.volume %>">
+
+                    <% } %>
+                    </div>
+                    <!-- Luminosity -->
+                    <% if(deviceProp.luminosity !=null) {%>
+                              <label for='luminosity' class='form-label text-dark'>
+                                        Device luminosity</label>
+                              <input readonly id='deviceLuminosity' name="luminosity" class='form-label mw-auto' type="text"
+                                        value="<%= deviceProp.luminosity %>">
+                    
+                              <% } %>
+                                        </div>
+                    
+                    </div>
+                   
+          </div>
+</div> -->

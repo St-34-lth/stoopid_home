@@ -1,0 +1,40 @@
+<div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#Collapse<%= deviceItem.id %>" aria-expanded="true" aria-controls="collapseOne">
+                    <%= deviceItem.name %>
+                    </button>
+                   
+          </h2>
+          <div id="Collapse<%= deviceItem.id %>" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                             
+                             
+                    <div class="col">
+                             <!-- ID -->
+                    <label for='deviceID' class='form-label text-dark'>
+                              device ID</label>
+                    <input readonly id='deviceID' name="deviceID" class='form-label' type="text" value="<%= deviceItem.id %>">
+                    <!-- Status -->
+                    <label for='status' class='form-label text-dark'>
+                              device status</label>
+                    <input readonly id='deviceStatus' name="status" class='form-label mw-auto' type="text"
+                              value="<%= deviceItem.status == 0 ? 'Off' : 'On' %>">
+                              <!-- Condition -->
+                    <label for='condition' class='form-label text-dark'>
+                              device ID</label>
+                              <input readonly id='deviceCondition' name="condition" class='form-label mw-auto' type="text"
+                                        value="<%= deviceItem.condi %>">
+                              
+                    
+                    
+                   
+                   
+                    
+                    
+                    </div>
+                    </div>
+                   
+          </div>
+</div>

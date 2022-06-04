@@ -1,0 +1,19 @@
+<div class='col-lg-3'>
+          <% if(devices.length) {%>
+                    <% devices.forEach((device)=> { %>
+                    <div class="card" style="width: 10rem;">
+                              <form action="delAction" name="deleteAction" method="post">
+                                        <input type="hidden" name="deviceID" value="<%=device.id%>">
+
+                              <div class="card-body">
+                                        <h5 class="card-title"><%=device.name %></h5>
+                                       <button formtarget="deleteAction" type="button" class="btn btn-secondary" onclick="dialogueWindow(this)">Delete</button>
+                                        
+                              </div>
+                              </form>
+                              
+                              
+                    </div>
+         <% })%>
+         <% } %> 
+</div>

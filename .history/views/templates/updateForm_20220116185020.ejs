@@ -1,0 +1,149 @@
+<div id="updateFormContainer" class='col-lg'>
+          <form id="updateDevice<%= device.id %>" method='post' name="updateDeviceForm" action='updateDevice'>
+
+                    
+                              
+                    <!-- Device name -->
+                    <div class="col">
+                              <label class='form-label text-dark' for='deviceName'>Device</label>
+                              <img id='deviceImage' name='<%= device.name %>' class='deviceSVG' type='svg' src="">
+                              <select id="selectedDeviceName" class='text-dark' name="deviceName">
+                                        <option><%= device.name %></option>
+                              </select> 
+                              
+                              <label for='deviceID' class='form-label text-dark'>
+                                        device ID</label>
+                              <input readonly id='deviceID'  name="deviceID" class='form-label' type="text" value="<%= device.id %>">
+                    </div>
+                    
+                    
+                    <!-- Status -->
+                    <label class='text-dark form label' for='status'>Device status</label>
+                    <img id='statusImage' class='optSVG' type='svg' src="">
+                    <% if(device.status==1) { %>
+                    <div class="form-check">
+                              <input class="form-check-input" type="radio" name="status" id="deviceOn" checked value=1>
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        On
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input class="form-check-input" type="radio" name="status" id="deviceOff" value=0 >
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Off
+                              </label>
+                    </div>
+                    <% } else { %>
+                    <div class="form-check">
+                              <input class="form-check-input" type="radio" name="status" id="deviceOn" value=1>
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        On
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input checked class="form-check-input" type="radio" name="status" id="deviceOff" value=0>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Off
+                              </label>
+                    </div>
+                    <% } %> 
+                    
+                    <!-- Open/closed -->
+                    <% if(device.openclose != null) { %>
+                    <div id='openclosedContainer'>
+                              <label class='text-dark form label' for='openclosed'>Open/Closed</label>
+                              <img id='opencloseImage' class='optSVG' type='svg' src="">
+                              <% if(device.openclose==1) { %>
+                              <div class="form-check">
+                                        <input checked class="form-check-input" type="radio" name="openclose" id="deviceOpen" value=1>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                  Open
+                                        </label>
+                              </div>
+                              <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="openclose" id="deviceClose" value=0>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                  Closed
+                                        </label>
+                              </div>
+                              <% } else { %>
+                              <!-- open -->
+                              <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="openclose" id="deviceOpen" value=1>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                  Open
+                                        </label>
+                              </div>
+                              <!-- closed -->
+                              <div class="form-check">
+                                        <input checked class="form-check-input" type="radio" name="openclose" id="deviceClosed"
+                                                  value=0>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                  Closed
+                                        </label>
+                              </div>
+                              <% } %>
+                              </div>
+                    <% } %>
+
+                    <!-- Condition -->
+                    <label for="condition">Device condition</label>
+                    <select id='deviceCondition'  name="condition" class="form-select" size="3" aria-label="size 3 select">
+                              <% if(device.condi=='Operational') { %>
+                                        <option selected value="Operational">Operational</option>
+                                        <option  value="Remote">Remote</option>
+                                        <option  value="Disconnected">Disconnected</option>
+                              <% } else if(device.condi=='Remote') { %>
+                                        <option value="Operational">Operational</option>
+                                        <option selected value="Remote">Remote</option>         
+                                        <option value="Disconnected">Disconnected</option>
+                                      
+                              <% } else if(device.condi=='Disconnected') { %> 
+                                        <option value="Operational">Operational</option>
+                                        <option value="Remote">Remote</option>
+                                        <option selected value="Disconnected">Disconnected</option>          
+                              <% } %>
+                              
+                    </select>
+
+                    
+                    <!-- Temperature -->
+                    <% if(device.temperature !=null) { %>
+                    <label class="form-label">Temperature</label>
+                    <input id='deviceTemperature' type="text" name="temperature" value="<%= device.temperature!= null ? device.temperature : ''%>" >
+                    <img id='temperatureImage' class='optSVG' type='svg' src="">
+                    <% } %>
+                   
+                    <!-- Volume -->
+                    <% if(device.volume !=null) { %>
+                    <div id="volumeContainer">
+                    <label class='form-label text-dark' for='volume'>Volume</label>
+                    <img id='volumeImage' class='optSVG' type='svg' src="">
+                    <input onchange="updateVolumeEventListener(this)" class='property' id='deviceVolume' type="range" defaultValue=null value="<%= device.volume!= null ? device.volume : ''%>" name="volume">
+                    </div>
+                    <% } %>
+                    
+                    <!-- Luminosity-->
+                    <% if(device.luminosity !=null) { %>
+                    <div id="luminosityContainer">
+                    <label class='form-label text-dark' for='luminosity'>Luminosity</label>
+                    <img id='luminosityImage' class='optSVG' type='svg' src="">
+                    <input onchange="updateLuminosityEventListener(this)" class='property' id="deviceLuminosity"
+                              type="range" min="0" max="100" step="1" defaultValue="null" value="<%= device.luminosity!= null ? device.luminosity : ''%>"" name="luminosity">
+                              <span id="luminosityValueContainer"></span>
+                    </div>
+                    <% } %>
+                    <% if(device.action!=null) { %>
+                    <!-- Action -->
+                    <div id="actionContainer">
+                              <label for="action" class="form-label">Action</label>
+                              <img id='actionImage' class='optSVG' type='svg' src="">
+                              <input class='property' disabled type="text" id="deviceAction" name="action" defaultValue="" value="<%= device.action %>">
+                    </div>
+                    <% } %> 
+                    
+          </form>
+          <button onClick="validateUpdateDevice(availableDevices,'<%= device.id%>')" class="btn btn-submit"
+                    type='button' formtarget="updateDeviceForm">Update</button>
+</div>
+

@@ -1,0 +1,35 @@
+<div onclick="test()" class='col'>
+          
+                    <%if(devices.length){%>
+                    <ul class="nav nav-tabs" id="devicesTab" role="tablist">
+                    <% devices.forEach((device)=> { %>
+                             
+                              <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="home-tab<%=device.id %>" data-bs-toggle="tab" data-bs-target="#home<%=device.id %>" type="button"
+                                                  role="tab" aria-controls="home" aria-selected="true"><%=device.id%></button>
+                            
+                                                  <!-- <%=device.name %> -->
+                                                  
+                                                 
+                              </li>
+    
+                              <% }) %>
+                    </ul>
+          <% } %>
+
+          
+          <%if(devices.length){%>
+          <div  class="tab-content">
+                    <% devices.forEach((device)=> { %>
+          
+                              <div  class="tab-pane" id="home<%=device.id %>" role="tabpanel" aria-labelledby="home-tab">
+          
+                                        <%-include('updateForm',{device:device}) %>
+                              </div>
+                              <% }) %>
+          
+          </div>
+          <% } %>
+</div>
+
+ 

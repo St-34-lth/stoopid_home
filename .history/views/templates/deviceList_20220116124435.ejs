@@ -1,0 +1,19 @@
+<script>
+                    var optionAssets = "<%- JSON.stringify(optionAssets) %>"
+                    var deviceAssets = "<%- JSON.stringify(deviceAssets) %>"
+</script>
+<div class='col'>
+          <div class='row'>
+                    <div class="accordion" id="accordionExample">
+          <%if(devices.length){%>
+                    <% devices.forEach((device) => { %>
+                              <%- include('deviceListItem', {deviceProp: device}) %>
+                    <% }) %>
+                    <% } %>
+                    </div>
+          </div>
+       
+</div>
+
+
+

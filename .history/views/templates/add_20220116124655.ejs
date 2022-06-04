@@ -1,0 +1,110 @@
+<div class='col-lg' >
+
+<script>
+addEventListener('DOMContentLoaded',eventHandler,{'once':true})
+</script>
+
+<form id="registerDevice" method='post' name="registerDevice" action='registerDevice'>
+       
+
+          <!-- Device name -->
+     
+                  
+                    <label class='form-label text-dark ' for='deviceName'>Device</label>
+                    <select onchange='addPageEventListener(event,availableDevices,optionAssets)' id="selectDeviceName" name='deviceName' class="form-select form-select-md mb-3">
+                              <% availableDevices.forEach((device,index) =>  { %>
+                              <option id="<%= index %>"><%= device.name %></option>
+                                        
+                              <% }) %>
+                              </select>
+                             
+                    
+                   
+                   
+          <!-- Status -->
+                    <label class='text-dark form label' for='status'>Device status</label>
+                    <img id='statusImage' class='addOptionSVG' type='svg' src="">
+                    <div class="form-check">
+                              <input class="form-check-input property" type="radio" name="status" id="deviceOn" value="1" >
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        On
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input class="form-check-input property" type="radio" name="status" id="deviceOff" value="0" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Off
+                              </label>
+                    </div>
+          <!-- Openclosed -->
+          <div id='opencloseContainer'>
+                    <label class='text-dark form label' for='status'>Open/ Closed</label>
+                    <img id='opencloseImage' class='addOptionSVG' type='svg' src="">
+                    <div class="form-check">
+                              <input class="form-check-input property" type="radio" name="openclose" id="deviceOpen" value="1">
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        Open
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input class="form-check-input property" type="radio" name="openclose" id="deviceClosed" value="0" >
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Closed
+                              </label>
+                    </div>
+          </div>
+          <!-- Condition -->
+                    <label for="condition">Device condition</label>
+                   
+                    <select id="deviceCondition" name="condition" class="form-select property" size="3" aria-label="size 3 select">
+                              <option selected>Operational</option>
+                              <option value="Remote">Remote</option>
+                              <option value="Disconnected">Disconnected</option>
+                              
+                    </select>
+          <!-- Temperature -->
+                    <label for="temperature" class="form-label">Temperature</label>
+                    <img id='temperatureImage' class='addOptionSVG' type='svg' src="">
+                    <input class='property' disabled type="text" id="deviceTemperature" name="temperature" defaultValue="">
+                    
+          <!-- Volume -->
+          
+                    <div id="volumeContainer">
+                    <label class='form-label text-dark' for='volume'>Volume</label>
+                    <img id='volumeImage' class='addOptionSVG' type='svg' src="">
+                    <input onchange="updateVolumeEventListener(this)" class='property'disabled id="deviceVolume"type="range" min="0" max="100" step="1" defaultValue="null"value=""name="volume">
+                              <span id="volumeValueContainer"></span>
+                    </div>
+          <!-- Luminosity -->
+          <div id="luminosityContainer">
+          
+                    <label class='form-label text-dark' for='luminosity'>Luminosity</label>
+                    <img id='luminosityImage' class='addOptionSVG' type='svg' src="">
+                    <input onchange="updateLuminosityEventListener(this)" class='property' disabled id="deviceLuminosity" type="range"
+                              min="0" max="100" step="1" defaultValue="null" value="" name="luminosity">
+                    <span id="luminosityValueContainer"></span>
+
+          </div>
+          <!-- Action -->
+          <div id="actionContainer">
+          <label for="action" class="form-label">Action</label>
+          <img id='actionImage' class='addOptionSVG' type='svg' src="">
+          <input class='property' disabled type="text" id="deviceAction" name="action" defaultValue="">
+          </div>
+          
+
+                    <div id="error"></div>
+          <button form="registerDevice" onClick='validateRegisterForm(availableDevices)' class="btn btn-submit" type="button">Submit</button>
+</form>
+
+<script>
+var availableDevices = '<%- JSON.stringify(availableDevices) %>' 
+var deviceAssets = '<%- JSON.stringify(deviceAssets) %>'
+var optionAssets = '<%- JSON.stringify(optionAssets) %>'
+</script>
+
+<!-- is this necessary? -->
+<% if(content.error) {%>
+          <script>window.alert('error')</script> 
+<% } %>
+</div>

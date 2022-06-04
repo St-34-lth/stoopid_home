@@ -1,0 +1,82 @@
+<div id="updateFormContainer" class='col-lg'>
+          <form id="updateDevice<%= device.id %>" method='post' name="updateDeviceForm" action='updateDevice'>
+
+                    
+                              
+                    <!-- Device name -->
+                    <div class="col">
+                              <label class='form-label text-dark' for='deviceName'>Device</label>
+                              <select id="selectedDeviceName" class='text-dark' name="deviceName">
+                                        <option><%= device.name %></option>
+                              </select> 
+                              
+                              <label for='deviceID' class='form-label text-dark'>
+                                        device ID</label>
+                              <input readonly id='deviceID'  name="deviceID" class='form-label' type="text" value="<%= device.id %>">
+                    </div>
+
+                    <!-- Status -->
+                    <label class='text-dark form label' for='status'>Device status</label>
+                    <% if(device.status==1) { %>
+                    <div class="form-check">
+                              <input class="form-check-input" type="radio" name="status" id="deviceOn" checked value=1>
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        On
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input class="form-check-input" type="radio" name="status" id="deviceOff" value=0 >
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Off
+                              </label>
+                    </div>
+                    <% } else { %>
+                              <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="deviceOn" value=1>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                  On
+                                        </label>
+                              </div>
+                              <div class="form-check">
+                                        <input checked class="form-check-input" type="radio" name="status" id="deviceOff" value=0>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                  Off
+                                        </label>
+                              </div>
+                    <% } %> 
+
+
+                    <!-- Condition -->
+                    <label for="condition">Device condition</label>
+                    <select name="condition" class="form-select" size="3" aria-label="size 3 select">
+                              <% if(device.condi=='Operational') { %>
+                                        <option selected value="Operational">Operational</option>
+                                        <option  value="Remote">Remote</option>
+                                        <option  value="Disconnected">Disconnected</option>
+                              <% } else if(device.condi=='Remote') { %>
+                                        <option value="Operational">Operational</option>
+                                        <option selected value="Remote">Remote</option>         
+                                        <option value="Disconnected">Disconnected</option>
+                                      
+                              <% } else if(device.condi=='Disconnected') { %> 
+                                        <option value="Operational">Operational</option>
+                                        <option value="Remote">Remote</option>
+                                        <option selected value="Disconnected">Disconnected</option>          
+                              <% } %>
+                              
+                    </select>
+                    <!-- Temperature -->
+                    <label class="form-label">Temperature</label>
+                    <input type="text" name="temperature" value="<%= device.temperature!= null ? device.temperature : ''%>" >
+
+                    <!-- Volume -->
+                    <label class='form-label text-dark' for='volume'>Volume</label>
+                    <input type="range" defaultValue=null value="<%= device.volume!= null ? device.volume : ''%>" name="volume">
+
+                    <button onClick="validateUpdateForm(availableDevices,'<%= device.id%>')" class="btn btn-submit" type='button'>Update</button>
+          </form>
+</div>
+<script>
+          var availableDevices = '<%- JSON.stringify(availableDevices) %>' 
+</script>
+          

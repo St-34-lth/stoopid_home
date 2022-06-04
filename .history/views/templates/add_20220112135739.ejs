@@ -1,0 +1,63 @@
+<div class='col-lg'>
+<form id="registerDevice" method='post' name="registerDevice" action='registerDevice'>
+        
+
+          <!-- Device name -->
+     
+                  
+                    <label class='form-label text-dark ' for='deviceName'>Device</label>
+                    <select onchange='deviceChosen(event,availableDevices)' id="selectDeviceName" name='deviceName' class="form-select form-select-md mb-3">
+                              <% availableDevices.forEach((device,index) =>  { %>
+                                        <option id="<%= index %>"><%= device.name %></option>
+                                        
+                              <% }) %>
+                    
+                    </select>
+                   
+          <!-- Status -->
+                    <label class='text-dark form label' for='status'>Device status</label>
+                    <div class="form-check">
+                              <input class="form-check-input choice" type="radio" name="status" id="deviceOn" value="1" >
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                        On
+                              </label>
+                    </div>
+                    <div class="form-check">
+                              <input class="form-check-input choice" type="radio" name="status" id="deviceOff" value="0" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                        Off
+                              </label>
+                    </div>
+
+                  
+          <!-- Condition -->
+                    <label for="condition">Device condition</label>
+                    <select id="deviceCondition" name="condition" class="form-select choice" size="3" aria-label="size 3 select">
+                              <option selected>Operational</option>
+                              <option value="1">Remote</option>
+                              <option value="2">Disconnected</option>
+                              
+                    </select>
+          <!-- Temperature -->
+                    <label for="temperature" class="form-label">Temperature</label>
+                    <input class='choice' disabled type="text" id="deviceTemperature" name="temperature" defaultValue="">
+                    
+<!-- Volume -->
+                    <div id="volumeContainer">
+                    <label class='form-label text-dark' for='volume'>Volume</label>
+                    <input class='choice'disabled id="deviceVolume"type="range" min="0" max="100" step="1" defaultValue="0"value=""name="volume">
+                              <span id="volumeValueContainer">0</span>
+                    </div>
+   
+                    <div id="error"></div>
+          <button form="registerDevice" onClick='validateDevice()' class="btn btn-submit" type="button">Submit</button>
+</form>
+
+<script>
+var availableDevices = '<%- JSON.stringify(availableDevices) %>' 
+</script>
+
+<% if(content.error) {%>
+          <script>window.alert('error')</script> 
+<% } %>
+</div>

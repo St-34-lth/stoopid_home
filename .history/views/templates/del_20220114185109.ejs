@@ -1,0 +1,25 @@
+<div class='col'>
+          <% if(devices.length) {%>
+                    <% devices.forEach((device)=> { %>
+                   
+                   <div class='col w-25'>
+                    <div class="card ">
+                              <form action="delAction" name="deleteAction" method="post">
+                                       
+
+                              <div class="card-body">
+                                        <h5 class="card-title text-center"><%=device.name %></h5>
+                                        <div class='row'>
+                                        <label for="deviceID" class='form-label text-center'>Device ID</label>
+                                        <input class='form-input text-center'readonly type="text" name="deviceID" value="<%=device.id%>">
+                                       <button id="deleteButton" formtarget="deleteAction" type="button" class="btn btn-secondary" onclick="dialogueWindow(this)">Delete</button>
+                                        </div>
+                              </div>
+                              </form>
+                              
+                     </div>
+          </div>
+
+         <% })%>
+         <% } %> 
+</div>

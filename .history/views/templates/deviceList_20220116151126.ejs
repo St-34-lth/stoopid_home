@@ -1,0 +1,45 @@
+<script>
+        
+const optionAssets = '<%- JSON.stringify(optionAssets) %>'
+const deviceAssets = '<%- JSON.stringify(deviceAssets) %>'
+var eventHandler = function(event, optionAssets, deviceAssets)
+{
+
+          console.log(event)
+
+
+          if (event.type = 'DOMContentLoaded') {
+                    if (event.path[ 0 ].URL.includes('addDevice')) {
+                              addPageEventListener(event, availableDevices)
+                    }
+                    if (event.path[ 0 ].URL.includes('devices')) {
+                              getdeviceListings(optionAssets)
+                    }
+          }
+
+}
+
+
+addEventListener('DOMContentLoaded',eventHandler.bind(this,optionAssets,deviceAssets),{'once':true})
+</script>
+<div class='col'>
+          <div class='row'>
+
+                    <div class=col-12>
+                    <div class="accordion" id="accordionExample">
+                    
+                    <%if(devices.length){%>
+                    <% devices.forEach((device) => { %>
+                              <%- include('deviceListItem', {deviceProp: device}) %>
+                    <% }) %>
+                    <% } %>
+                    
+                    </div>
+                    </div>
+          </div>
+          </div>
+       
+</div>
+
+
+

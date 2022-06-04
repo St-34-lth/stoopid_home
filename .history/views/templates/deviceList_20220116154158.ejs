@@ -1,0 +1,31 @@
+<script>
+        
+const optionAssets = '<%- JSON.stringify(optionAssets) %>'
+const deviceAssets = '<%- JSON.stringify(deviceAssets) %>'
+const accordionElmt = document.getElementById('accordionBase')
+const devicesLoaded = new CustomEvent('devicesLoaded', { optionAssets: optionAssets,deviceAssets:deviceAssets})
+accordionElmt.addEventListener().addEventListener('devicesLoaded',getDeviceListings)
+
+addEventListener('DOMContentLoaded',eventHandler.bind(this,optionAssets,deviceAssets),{'once':true})
+</script>
+<div class='col'>
+          <div class='row'>
+
+                    <div class=col-12>
+                    <div class="accordion" id="accordionBase">
+                    
+                    <%if(devices.length){%>
+                    <% devices.forEach((device) => { %>
+                              <%- include('deviceListItem', {deviceProp: device}) %>
+                    <% }) %>
+                    <% } %>
+                    
+                    </div>
+                    </div>
+          </div>
+          </div>
+       
+</div>
+
+
+
